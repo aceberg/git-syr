@@ -1,6 +1,3 @@
-PKG_NAME=gitbackup
-DUSER=aceberg
-
 mod:
 	rm go.mod || true && \
 	rm go.sum || true && \

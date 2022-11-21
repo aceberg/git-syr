@@ -6,17 +6,23 @@ import (
 	"os/exec"
 )
 
-func Pull(path string) {
+func CheckIfPush(path string) bool {
 
-	log.Println("Pull repo", path)
+	log.Println("Check if repo needs push", path)
 
 	gitDir := "--git-dir=" + path + "/.git"
 	gitTree := "--work-tree=" + path
 
-	cmd := exec.Command("git", gitDir, gitTree, "pull")
+	cmd := exec.Command("git", gitDir, gitTree, "status", "-s")
 
 	out, err := cmd.CombinedOutput()
 	CheckIfError(err)
 
 	log.Println(string(out))
+
+	if string(out) == "" {
+		return false
+	} else {
+		return true
+	}
 }

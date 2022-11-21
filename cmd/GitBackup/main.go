@@ -17,26 +17,17 @@ type Repo struct {
 func main() {
 	var myRepo Repo
 	myRepo.Timeout = 120
-	myRepo.Path = "/home/data/repo/00-public/MyDocs"
+	myRepo.Path = "/home/data/repo/00-public/drone"
 	myRepo.Pull = "yes"
 
 	git.Pull(myRepo.Path)
+	if git.CheckIfPush(myRepo.Path) {
+		git.Push(myRepo.Path)
+	}
 }
 
 // func gitRepo(repo Repo) {
 // 	for {
-// 		// We instantiate a new repository targeting the given path (the .git folder)
-// 		r, err := git.PlainOpen(repo.Path)
-// 		CheckIfError(err)
-
-// 		// Get the working directory for the repository
-// 		w, err := r.Worktree()
-// 		CheckIfError(err)
-
-// 		// Pull the latest changes from the origin remote and merge into the current branch
-// 		err = w.Pull(&git.PullOptions{RemoteName: "origin"})
-// 		CheckIfError(err)
-
 // 		fmt.Println(time.Now())
 // 		time.Sleep(time.Duration(repo.Timeout) * time.Second) // Timeout
 // 	}
