@@ -3,20 +3,14 @@ package main
 import (
 	// "fmt"
 	// "time"
-	// . "github.com/aceberg/GitBackup/internal/common"
-	"github.com/aceberg/GitBackup/internal/git"
+	// . "github.com/aceberg/GitSyncTimer/internal/common"
+	"github.com/aceberg/GitSyncTimer/internal/git"
+	. "github.com/aceberg/GitSyncTimer/internal/models"
 )
-
-type Repo struct {
-	Path    string
-	Timeout int
-	Pull    string
-	Push    string
-}
 
 func main() {
 	var myRepo Repo
-	myRepo.Timeout = 120
+	myRepo.Timeout = "120"
 	myRepo.Path = "/home/data/repo/00-public/drone"
 	myRepo.Pull = "yes"
 

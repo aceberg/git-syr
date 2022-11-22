@@ -1,7 +1,7 @@
 package git
 
 import (
-	. "github.com/aceberg/GitBackup/internal/common"
+	. "github.com/aceberg/GitSyncTimer/internal/common"
 	"log"
 	"os/exec"
 	"time"

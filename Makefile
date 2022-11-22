@@ -1,11 +1,11 @@
 mod:
 	rm go.mod || true && \
 	rm go.sum || true && \
-	go mod init github.com/aceberg/GitBackup && \
+	go mod init github.com/aceberg/GitSyncTimer && \
 	go mod tidy
 
 run:
-	cd cmd/GitBackup/ && \
+	cd cmd/GitSyncTimer/ && \
 	go run .
 
 fmt:
@@ -15,5 +15,5 @@ lint:
 	golangci-lint run
 
 go-build:
-	cd cmd/GitBackup/ && \
-	CGO_ENABLED=0 go build -o ../../GitBackup .
+	cd cmd/GitSyncTimer/ && \
+	CGO_ENABLED=0 go build -o ../../GitSyncTimer .

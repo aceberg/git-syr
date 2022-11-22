@@ -1,11 +1,11 @@
 package conf
 
 import (
-	. "github.com/aceberg/GitBackup/internal/models"
+	. "github.com/aceberg/GitSyncTimer/internal/models"
 	"github.com/spf13/viper"
 )
 
-const configPath = "/data/gitbackup/config"
+const configPath = "/data/GitSyncTimer/config"
 
 func GetConfig() (config Conf) {
 	viper.SetDefault("IFACE", "enp1s0")
