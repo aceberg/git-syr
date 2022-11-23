@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/aceberg/GitBackup)](https://goreportcard.com/report/github.com/aceberg/GitBackup)
+[![Go Report Card](https://goreportcard.com/badge/github.com/aceberg/GitSyncTimer)](https://goreportcard.com/report/github.com/aceberg/GitSyncTimer)
 
 # GitSyncTimer
 

@@ -1,23 +1,26 @@
 package main
 
 import (
-	// "fmt"
+	"fmt"
 	// "time"
 	// . "github.com/aceberg/GitSyncTimer/internal/common"
-	"github.com/aceberg/GitSyncTimer/internal/git"
-	. "github.com/aceberg/GitSyncTimer/internal/models"
+	// "github.com/aceberg/GitSyncTimer/internal/git"
+	// . "github.com/aceberg/GitSyncTimer/internal/models"
+	"github.com/aceberg/GitSyncTimer/internal/yaml"
 )
 
-func main() {
-	var myRepo Repo
-	myRepo.Timeout = "120"
-	myRepo.Path = "/home/data/repo/00-public/drone"
-	myRepo.Pull = "yes"
+const configPath = "/data/GitSyncTimer/"
+const yamlPath = "/data/GitSyncTimer/repos.yaml"
 
-	git.Pull(myRepo.Path)
-	if git.CheckIfPush(myRepo.Path) {
-		git.Push(myRepo.Path)
-	}
+func main() {
+	allRepos := yaml.ReadYaml(yamlPath)
+
+	fmt.Println("REPO:", allRepos)
+
+	// git.Pull(myRepo.Path)
+	// if git.CheckIfPush(myRepo.Path) {
+	// 	git.Push(myRepo.Path)
+	// }
 }
 
 // func gitRepo(repo Repo) {
