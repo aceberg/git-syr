@@ -8,13 +8,13 @@ import (
 	"io/ioutil"
 )
 
-func ReadYaml(path string) []OneRepo {
+func ReadYaml(path string) []Repo {
 
-	yfile, err := ioutil.ReadFile(path)
+	file, err := ioutil.ReadFile(path)
 	CheckIfError(err)
 
-	var allRepos []OneRepo
-	err = yaml.Unmarshal(yfile, &allRepos)
+	var allRepos []Repo
+	err = yaml.Unmarshal(file, &allRepos)
 	CheckIfError(err)
 
 	return allRepos
