@@ -6,9 +6,8 @@ import (
 	"os/exec"
 )
 
+// CheckIfPush checks if the repo needs push
 func CheckIfPush(path string) bool {
-
-	log.Println("Check if repo needs push", path)
 
 	gitDir := "--git-dir=" + path + "/.git"
 	gitTree := "--work-tree=" + path
@@ -18,11 +17,11 @@ func CheckIfPush(path string) bool {
 	out, err := cmd.CombinedOutput()
 	CheckIfError(err)
 
-	log.Println(string(out))
+	log.Println("INFO: Check if repo needs push", path, "\n", string(out))
 
 	if string(out) == "" {
 		return false
-	} else {
-		return true
 	}
+	
+	return true
 }

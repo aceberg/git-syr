@@ -10,27 +10,23 @@ import (
 	"github.com/aceberg/GitSyncTimer/internal/yaml"
 )
 
-const configPath = "/data/GitSyncTimer/"
 const yamlPath = "/data/GitSyncTimer/repos.yaml"
 
 func main() {
 	allRepos := yaml.ReadYaml(yamlPath)
 
-	log.Println("REPOS:", allRepos)
-	
+	log.Println("INFO: all repos", allRepos)
+
 	for _, oneRepo := range allRepos {
-		log.Println("ONE REPO:", oneRepo.Name)
+		log.Println("INFO: started sync for repo", oneRepo.Name)
 		go gitRepo(oneRepo)
 	}
 
-	select{}
+	select {}
 }
 
 func gitRepo(repo Repo) {
-	log.Println("REPO:", repo.Name)
 	for {
-		log.Println("REPO:", repo.Name)
-
 		if repo.Data.Pull == "yes" {
 			git.Pull(repo.Data.Path)
 		}

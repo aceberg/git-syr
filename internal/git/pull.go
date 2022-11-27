@@ -8,8 +8,6 @@ import (
 
 func Pull(path string) {
 
-	log.Println("Pull repo", path)
-
 	gitDir := "--git-dir=" + path + "/.git"
 	gitTree := "--work-tree=" + path
 
@@ -18,5 +16,5 @@ func Pull(path string) {
 	out, err := cmd.CombinedOutput()
 	CheckIfError(err)
 
-	log.Println(string(out))
+	log.Println("INFO: Pull repo", path, "\n", string(out))
 }
