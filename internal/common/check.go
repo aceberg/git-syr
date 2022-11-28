@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// CheckIfError prints error, if it is not nil
 func CheckIfError(err error) {
 	if err == nil {
 		return

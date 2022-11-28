@@ -1,5 +1,6 @@
 package models
 
+// Repo - git repository
 type Repo struct {
 	Name string `yaml:"name"`
 	Data struct {

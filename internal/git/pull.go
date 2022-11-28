@@ -6,6 +6,7 @@ import (
 	"os/exec"
 )
 
+// Pull - executes `git pull` in repo
 func Pull(path string) {
 
 	gitDir := "--git-dir=" + path + "/.git"

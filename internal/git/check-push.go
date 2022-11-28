@@ -19,9 +19,5 @@ func CheckIfPush(path string) bool {
 
 	log.Println("INFO: Check if repo needs push", path, "\n", string(out))
 
-	if string(out) == "" {
-		return false
-	}
-	
-	return true
+	return string(out) != ""
 }

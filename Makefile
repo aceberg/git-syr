@@ -16,4 +16,4 @@ lint:
 
 go-build:
 	cd cmd/GitSyncTimer/ && \
-	CGO_ENABLED=0 go build -o ../../GitSyncTimer .
+	CGO_ENABLED=0 go build -o ../../tmp/GitSyncTimer .

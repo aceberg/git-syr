@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+// ReadYaml - read .yaml file to []struct
 func ReadYaml(path string) []Repo {
 
 	file, err := os.ReadFile(path)

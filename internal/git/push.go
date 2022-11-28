@@ -7,6 +7,11 @@ import (
 	"time"
 )
 
+// Push - executes
+// git add -A
+// git commit -m `date`
+// git push
+// in repo
 func Push(path string) {
 
 	currentTime := time.Now()
