@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"github.com/aceberg/GitSyncTimer/internal/check"
 	"github.com/aceberg/GitSyncTimer/internal/git"
 	"github.com/aceberg/GitSyncTimer/internal/sync"
@@ -8,9 +9,14 @@ import (
 	"log"
 )
 
-const yamlPath = "/data/GitSyncTimer/repos.yaml"
+// const yamlPath = "/data/GitSyncTimer/repos.yaml"
 
 func main() {
+	yamlPtr := flag.String("r", "/data/GitSyncTimer/repos.yaml", "Path to repos yaml file")
+	webPtr := flag.Bool("w", false, "Launch web gui")
+	flag.Parse()
+	yamlPath := *yamlPtr
+
 	allRepos := yaml.ReadYaml(yamlPath)
 	log.Println("INFO: all repos", allRepos)
 
@@ -32,6 +38,10 @@ func main() {
 				log.Println("ERROR:", oneRepo.Data.Path, "is not a git repository")
 			}
 		}
+	}
+
+	if *webPtr {
+		log.Println("WEB GUI")
 	}
 
 	select {}

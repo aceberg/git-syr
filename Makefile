@@ -13,6 +13,7 @@ fmt:
 
 lint:
 	golangci-lint run
+	golint ./...
 
 go-build:
 	cd cmd/GitSyncTimer/ && \
