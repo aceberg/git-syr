@@ -1,13 +1,11 @@
 package main
 
 import (
-	"log"
-	"strconv"
-	"time"
-	// . "github.com/aceberg/GitSyncTimer/internal/common"
+	"github.com/aceberg/GitSyncTimer/internal/check"
 	"github.com/aceberg/GitSyncTimer/internal/git"
-	. "github.com/aceberg/GitSyncTimer/internal/models"
+	"github.com/aceberg/GitSyncTimer/internal/sync"
 	"github.com/aceberg/GitSyncTimer/internal/yaml"
+	"log"
 )
 
 const yamlPath = "/data/GitSyncTimer/repos.yaml"
@@ -21,34 +19,20 @@ func main() {
 		return
 	}
 
+	var err error
 	for _, oneRepo := range allRepos {
-		if git.CheckIfRepo(oneRepo.Data.Path) {
-			log.Println("INFO: started sync for repo", oneRepo.Name)
-			go gitRepo(oneRepo)
+		oneRepo.Data.Timeout, err = check.Timeout(oneRepo.Data.Timeout)
+		if err != nil {
+			log.Println("ERROR:", oneRepo.Name, err)
 		} else {
-			log.Println("ERROR:", oneRepo.Data.Path, "is not a git repository")
+			if git.CheckIfRepo(oneRepo.Data.Path) {
+				log.Println("INFO: started sync for repo", oneRepo.Name)
+				go sync.SyncRepo(oneRepo)
+			} else {
+				log.Println("ERROR:", oneRepo.Data.Path, "is not a git repository")
+			}
 		}
 	}
 
 	select {}
-}
-
-func gitRepo(repo Repo) {
-	for {
-		check := true
-		if repo.Data.Pull == "yes" {
-			check = false
-			git.Pull(repo.Data.Path)
-		}
-		if repo.Data.Push == "yes" && git.CheckIfPush(repo.Data.Path) {
-			check = false
-			git.Push(repo.Data.Path)
-		}
-		if check {
-			break
-		}
-
-		timeout, _ := strconv.Atoi(repo.Data.Timeout)
-		time.Sleep(time.Duration(timeout) * time.Second) // Timeout
-	}
 }

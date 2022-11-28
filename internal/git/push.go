@@ -1,7 +1,7 @@
 package git
 
 import (
-	. "github.com/aceberg/GitSyncTimer/internal/common"
+	. "github.com/aceberg/GitSyncTimer/internal/check"
 	"log"
 	"os/exec"
 	"time"

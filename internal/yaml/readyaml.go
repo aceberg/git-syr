@@ -2,7 +2,7 @@ package yaml
 
 import (
 	// "fmt"
-	. "github.com/aceberg/GitSyncTimer/internal/common"
+	. "github.com/aceberg/GitSyncTimer/internal/check"
 	. "github.com/aceberg/GitSyncTimer/internal/models"
 	"gopkg.in/yaml.v3"
 	"os"
