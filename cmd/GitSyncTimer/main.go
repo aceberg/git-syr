@@ -2,22 +2,22 @@ package main
 
 import (
 	"flag"
-	"github.com/aceberg/GitSyncTimer/internal/check"
-	"github.com/aceberg/GitSyncTimer/internal/git"
 	"github.com/aceberg/GitSyncTimer/internal/sync"
+	"github.com/aceberg/GitSyncTimer/internal/web"
 	"github.com/aceberg/GitSyncTimer/internal/yaml"
 	"log"
 )
 
-// const yamlPath = "/data/GitSyncTimer/repos.yaml"
+const confPath = "/data/GitSyncTimer/config.yaml"
+const yamlPath = "/data/GitSyncTimer/repos.yaml"
 
 func main() {
-	yamlPtr := flag.String("r", "/data/GitSyncTimer/repos.yaml", "Path to repos yaml file")
-	webPtr := flag.Bool("w", false, "Launch web gui")
+	confPtr := flag.String("c", confPath, "Path to config yaml file")
+	yamlPtr := flag.String("r", yamlPath, "Path to repos yaml file")
+	webPtr := flag.Bool("w", true, "Launch web gui")
 	flag.Parse()
-	yamlPath := *yamlPtr
 
-	allRepos := yaml.ReadYaml(yamlPath)
+	allRepos := yaml.ReadYaml(*yamlPtr)
 	log.Println("INFO: all repos", allRepos)
 
 	if allRepos == nil {
@@ -25,23 +25,10 @@ func main() {
 		return
 	}
 
-	var err error
-	for _, oneRepo := range allRepos {
-		oneRepo.Data.Timeout, err = check.Timeout(oneRepo.Data.Timeout)
-		if err != nil {
-			log.Println("ERROR:", oneRepo.Name, err)
-		} else {
-			if git.CheckIfRepo(oneRepo.Data.Path) {
-				log.Println("INFO: started sync for repo", oneRepo.Name)
-				go sync.SyncRepo(oneRepo)
-			} else {
-				log.Println("ERROR:", oneRepo.Data.Path, "is not a git repository")
-			}
-		}
-	}
+	sync.AllRepos(allRepos)
 
 	if *webPtr {
-		log.Println("WEB GUI")
+		web.Gui(*confPtr, allRepos)
 	}
 
 	select {}

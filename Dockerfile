@@ -9,9 +9,11 @@ FROM alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache openssh-client ca-certificates bash \
-    && mkdir -p /data/GitSyncTimer
+RUN apk add --no-cache git openssh-client ca-certificates bash \
+    && mkdir -p /data/GitSyncTimer \
+    && mkdir -p /root/.ssh
 
 COPY --from=builder /GitSyncTimer /app/
+COPY config /root/.ssh/
 
 ENTRYPOINT ["./GitSyncTimer"]

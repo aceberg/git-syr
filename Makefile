@@ -1,3 +1,6 @@
+PKG_NAME=gitsynctimer
+DUSER=aceberg
+
 mod:
 	rm go.mod || true && \
 	rm go.sum || true && \
@@ -18,3 +21,6 @@ lint:
 go-build:
 	cd cmd/GitSyncTimer/ && \
 	CGO_ENABLED=0 go build -o ../../tmp/GitSyncTimer .
+
+docker-build:
+	docker build -t $(DUSER)/$(PKG_NAME) .
