@@ -1,11 +1,12 @@
 package web
 
 import (
+	"log"
 	// "fmt"
 	// "embed"
-	. "github.com/aceberg/GitSyncTimer/internal/models"
-	"log"
 	// "net/http"
+
+	"github.com/aceberg/GitSyncTimer/internal/models"
 )
 
 // var AppConfig Conf
@@ -14,7 +15,8 @@ import (
 // //go:embed templates/*
 // var TemplHTML embed.FS
 
-func Gui(confPath string, allRepos []Repo) {
+// Gui - start web server
+func Gui(confPath string, allRepos []models.Repo) {
 
 	log.Println("INFO: starting web gui with config", confPath)
 

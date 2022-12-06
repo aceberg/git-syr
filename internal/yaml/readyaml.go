@@ -2,21 +2,23 @@ package yaml
 
 import (
 	// "fmt"
-	. "github.com/aceberg/GitSyncTimer/internal/check"
-	. "github.com/aceberg/GitSyncTimer/internal/models"
-	"gopkg.in/yaml.v3"
 	"os"
+
+	"gopkg.in/yaml.v3"
+
+	"github.com/aceberg/GitSyncTimer/internal/check"
+	"github.com/aceberg/GitSyncTimer/internal/models"
 )
 
 // ReadYaml - read .yaml file to []struct
-func ReadYaml(path string) []Repo {
+func ReadYaml(path string) []models.Repo {
 
 	file, err := os.ReadFile(path)
-	CheckIfError(err)
+	check.IfError(err)
 
-	var allRepos []Repo
+	var allRepos []models.Repo
 	err = yaml.Unmarshal(file, &allRepos)
-	CheckIfError(err)
+	check.IfError(err)
 
 	return allRepos
 }

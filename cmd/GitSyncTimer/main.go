@@ -2,10 +2,11 @@ package main
 
 import (
 	"flag"
+	"log"
+
 	"github.com/aceberg/GitSyncTimer/internal/sync"
 	"github.com/aceberg/GitSyncTimer/internal/web"
 	"github.com/aceberg/GitSyncTimer/internal/yaml"
-	"log"
 )
 
 const confPath = "/data/GitSyncTimer/config.yaml"

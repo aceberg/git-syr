@@ -1,9 +1,10 @@
 package git
 
 import (
-	. "github.com/aceberg/GitSyncTimer/internal/check"
 	"log"
 	"os/exec"
+
+	"github.com/aceberg/GitSyncTimer/internal/check"
 )
 
 // CheckIfPush checks if the repo needs push
@@ -15,7 +16,7 @@ func CheckIfPush(path string) bool {
 	cmd := exec.Command("git", gitDir, gitTree, "status", "-s")
 
 	out, err := cmd.CombinedOutput()
-	CheckIfError(err)
+	check.IfError(err)
 
 	log.Println("INFO: Check if repo needs push", path, "\n", string(out))
 

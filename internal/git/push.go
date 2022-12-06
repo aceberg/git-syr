@@ -1,10 +1,11 @@
 package git
 
 import (
-	. "github.com/aceberg/GitSyncTimer/internal/check"
 	"log"
 	"os/exec"
 	"time"
+
+	"github.com/aceberg/GitSyncTimer/internal/check"
 )
 
 // Push - executes
@@ -22,15 +23,15 @@ func Push(path string) {
 
 	cmd := exec.Command("git", gitDir, gitTree, "add", "-A")
 	out1, err := cmd.CombinedOutput()
-	CheckIfError(err)
+	check.IfError(err)
 
 	cmd = exec.Command("git", gitDir, gitTree, "commit", "-m", timeString)
 	out2, err := cmd.CombinedOutput()
-	CheckIfError(err)
+	check.IfError(err)
 
 	cmd = exec.Command("git", gitDir, gitTree, "push")
 	out3, err := cmd.CombinedOutput()
-	CheckIfError(err)
+	check.IfError(err)
 
 	log.Println("INFO: Push repo", path, "\n", string(out1), "\n", string(out2), "\n", string(out3))
 }

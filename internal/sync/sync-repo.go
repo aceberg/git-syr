@@ -1,14 +1,15 @@
 package sync
 
 import (
-	"github.com/aceberg/GitSyncTimer/internal/git"
-	. "github.com/aceberg/GitSyncTimer/internal/models"
 	// "log"
 	"strconv"
 	"time"
+
+	"github.com/aceberg/GitSyncTimer/internal/git"
+	"github.com/aceberg/GitSyncTimer/internal/models"
 )
 
-func syncRepo(repo Repo) {
+func syncRepo(repo models.Repo) {
 	for {
 		if repo.Data.Pull == "yes" {
 			git.Pull(repo.Data.Path)

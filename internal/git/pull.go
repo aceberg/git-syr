@@ -1,9 +1,10 @@
 package git
 
 import (
-	. "github.com/aceberg/GitSyncTimer/internal/check"
 	"log"
 	"os/exec"
+
+	"github.com/aceberg/GitSyncTimer/internal/check"
 )
 
 // Pull - executes `git pull` in repo
@@ -15,7 +16,7 @@ func Pull(path string) {
 	cmd := exec.Command("git", gitDir, gitTree, "pull")
 
 	out, err := cmd.CombinedOutput()
-	CheckIfError(err)
+	check.IfError(err)
 
 	log.Println("INFO: Pull repo", path, "\n", string(out))
 }

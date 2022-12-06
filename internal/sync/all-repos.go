@@ -1,16 +1,18 @@
 package sync
 
 import (
+	"log"
+
 	"github.com/aceberg/GitSyncTimer/internal/check"
 	"github.com/aceberg/GitSyncTimer/internal/git"
-	. "github.com/aceberg/GitSyncTimer/internal/models"
-	"log"
+	"github.com/aceberg/GitSyncTimer/internal/models"
 )
 
-func AllRepos(allRepos []Repo) {
+// AllRepos - sync all repos
+func AllRepos(allRepos []models.Repo) {
 	var err error
 	for _, oneRepo := range allRepos {
-		oneRepo.Data.Timeout, err = check.Timeout(oneRepo.Data.Timeout)
+		oneRepo.Data.Timeout, err = check.TimeToSec(oneRepo.Data.Timeout)
 		if err != nil {
 			log.Println("ERROR:", oneRepo.Name, err)
 			continue
