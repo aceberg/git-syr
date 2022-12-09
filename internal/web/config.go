@@ -2,7 +2,6 @@ package web
 
 import (
 	"html/template"
-	"log"
 	"net/http"
 
 	"github.com/aceberg/git-syr/internal/check"
@@ -14,8 +13,7 @@ func configHandler(w http.ResponseWriter, r *http.Request) {
 	var guiData models.GuiData
 
 	guiData.Config = AppConfig
-
-	log.Println("CONFIG HANDLER")
+	guiData.Icon = Icon
 
 	guiData.Themes = []string{"cerulean", "cosmo", "cyborg", "darkly", "flatly", "journal", "litera", "lumen", "lux", "materia", "minty", "morph", "pulse", "quartz", "sandstone", "simplex", "sketchy", "slate", "solar", "spacelab", "superhero", "united", "vapor", "yeti", "zephyr"}
 

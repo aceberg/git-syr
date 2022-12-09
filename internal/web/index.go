@@ -12,6 +12,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	var guiData models.GuiData
 
 	guiData.Config = AppConfig
+	guiData.Icon = Icon
 	guiData.Repos = AllRepos
 
 	tmpl, err := template.ParseFiles("../../web/templates/index.html", "../../web/templates/header.html", "../../web/templates/footer.html")

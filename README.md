@@ -5,3 +5,5 @@
 Sync Your Repos
 
 Work in progress..
+
+<a href="https://www.flaticon.com/free-icons/cheese" title="cheese icons">Cheese icons created by Freepik - Flaticon</a>
