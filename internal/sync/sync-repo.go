@@ -11,14 +11,14 @@ import (
 
 func syncRepo(repo models.Repo) {
 	for {
-		if repo.Data.Pull == "yes" {
-			git.Pull(repo.Data.Path)
+		if repo.Pull == "yes" {
+			git.Pull(repo.Path)
 		}
-		if repo.Data.Push == "yes" && git.CheckIfPush(repo.Data.Path) {
-			git.Push(repo.Data.Path)
+		if repo.Push == "yes" && git.CheckIfPush(repo.Path) {
+			git.Push(repo.Path)
 		}
 
-		timeout, _ := strconv.Atoi(repo.Data.Timeout)
+		timeout, _ := strconv.Atoi(repo.Timeout)
 		time.Sleep(time.Duration(timeout) * time.Second) // Timeout
 	}
 }

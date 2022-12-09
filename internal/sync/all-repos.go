@@ -12,16 +12,16 @@ import (
 func AllRepos(allRepos []models.Repo) {
 	var err error
 	for _, oneRepo := range allRepos {
-		oneRepo.Data.Timeout, err = check.TimeToSec(oneRepo.Data.Timeout)
+		oneRepo.Timeout, err = check.TimeToSec(oneRepo.Timeout)
 		if err != nil {
 			log.Println("ERROR:", oneRepo.Name, err)
 			continue
 		}
-		if !git.CheckIfRepo(oneRepo.Data.Path) {
-			log.Println("ERROR:", oneRepo.Data.Path, "is not a git repository")
+		if !git.CheckIfRepo(oneRepo.Path) {
+			log.Println("ERROR:", oneRepo.Path, "is not a git repository")
 			continue
 		}
-		if oneRepo.Data.Push == "yes" || oneRepo.Data.Pull == "yes" {
+		if oneRepo.Push == "yes" || oneRepo.Pull == "yes" {
 			log.Println("INFO: started sync for repo", oneRepo.Name)
 			go syncRepo(oneRepo)
 		} else {

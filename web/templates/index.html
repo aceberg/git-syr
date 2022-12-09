@@ -36,18 +36,18 @@
             <form action="/update_repo/" method="post">
                 <input name="id" type="hidden" class="form-control" value="{{ .ID }}">
                 <td><input name="name" type="text" class="form-control" value="{{ .Name }}"></td>
-                <td><input name="path" type="text" class="form-control" value="{{ .Data.Path }}"></td>
-                {{ if eq .Data.Pull "yes" }}
-                    <td><input name="pull" value="{{ .Data.Pull }}" class="form-check-input" type="checkbox" checked></td>
+                <td><input name="path" type="text" class="form-control" value="{{ .Path }}"></td>
+                {{ if eq .Pull "yes" }}
+                    <td><input name="pull" value="{{ .Pull }}" class="form-check-input" type="checkbox" checked></td>
                 {{ else }}
                     <td><input name="pull" value="yes" class="form-check-input" type="checkbox"></td>
                 {{ end }}
-                {{ if eq .Data.Push "yes" }}
-                    <td><input name="push" value="{{ .Data.Push }}" class="form-check-input" type="checkbox" checked></td>
+                {{ if eq .Push "yes" }}
+                    <td><input name="push" value="{{ .Push }}" class="form-check-input" type="checkbox" checked></td>
                 {{ else }}
                     <td><input name="push" value="yes" class="form-check-input" type="checkbox"></td>
                 {{ end }}
-                <td><input name="timeout" type="text" class="form-control" value="{{ .Data.Timeout }}"></td>
+                <td><input name="timeout" type="text" class="form-control" value="{{ .Timeout }}"></td>
                 <td><button type="submit" class="btn btn-primary">Ok</button></td>
             </form>
             </tr>

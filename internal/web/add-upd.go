@@ -1,7 +1,7 @@
 package web
 
 import (
-	"log"
+	// "log"
 	"net/http"
 	"strconv"
 
@@ -14,10 +14,10 @@ func addHandler(w http.ResponseWriter, r *http.Request) {
 	var repo models.Repo
 
 	repo.Name = r.FormValue("name")
-	repo.Data.Path = r.FormValue("path")
-	repo.Data.Pull = r.FormValue("pull")
-	repo.Data.Push = r.FormValue("push")
-	repo.Data.Timeout = r.FormValue("timeout")
+	repo.Path = r.FormValue("path")
+	repo.Pull = r.FormValue("pull")
+	repo.Push = r.FormValue("push")
+	repo.Timeout = r.FormValue("timeout")
 
 	AllRepos = append(AllRepos, repo)
 
@@ -35,15 +35,15 @@ func updateHandler(w http.ResponseWriter, r *http.Request) {
 	repo.ID, _ = strconv.Atoi(idStr)
 
 	repo.Name = r.FormValue("name")
-	repo.Data.Path = r.FormValue("path")
-	repo.Data.Pull = r.FormValue("pull")
-	repo.Data.Push = r.FormValue("push")
-	repo.Data.Timeout = r.FormValue("timeout")
+	repo.Path = r.FormValue("path")
+	repo.Pull = r.FormValue("pull")
+	repo.Push = r.FormValue("push")
+	repo.Timeout = r.FormValue("timeout")
 
 	var newRepos []models.Repo
-	for i, _ := range AllRepos {
+	for i := range AllRepos {
 		if AllRepos[i].ID == repo.ID {
-			if repo.Data.Path != "" {
+			if repo.Path != "" {
 				newRepos = append(newRepos, repo)
 			}
 		} else {
@@ -52,7 +52,7 @@ func updateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	AllRepos = newRepos
 
-	log.Println("newRepos =", AllRepos)
+	// log.Println("newRepos =", AllRepos)
 
 	yaml.Write(YamlPath, AllRepos)
 

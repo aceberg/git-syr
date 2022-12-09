@@ -14,7 +14,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	guiData.Config = AppConfig
 	guiData.Icon = Icon
 
-	for i, _ := range AllRepos {
+	for i := range AllRepos {
 		AllRepos[i].ID = i + 1
 	}
 
