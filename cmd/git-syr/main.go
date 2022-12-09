@@ -18,7 +18,7 @@ func main() {
 	webPtr := flag.Bool("w", true, "Launch web gui")
 	flag.Parse()
 
-	allRepos := yaml.ReadYaml(*yamlPtr)
+	allRepos := yaml.Read(*yamlPtr)
 	log.Println("INFO: all repos", allRepos)
 
 	if allRepos == nil {
@@ -29,7 +29,7 @@ func main() {
 	sync.AllRepos(allRepos)
 
 	if *webPtr {
-		web.Gui(*confPtr, allRepos)
+		web.Gui(*confPtr, *yamlPtr, allRepos)
 	}
 
 	select {}

@@ -17,16 +17,19 @@ var (
 	AllRepos []models.Repo
 	// ConfigPath - path to Gui config file
 	ConfigPath string
+	// YamlPath - path to repos file
+	YamlPath string
 )
 
 // //go:embed templates/*
 // var TemplHTML embed.FS
 
 // Gui - start web server
-func Gui(confPath string, allRepos []models.Repo) {
+func Gui(confPath string, yamlPath string, allRepos []models.Repo) {
 
 	AllRepos = allRepos
 	ConfigPath = confPath
+	YamlPath = yamlPath
 
 	log.Println("INFO: starting web gui with config", ConfigPath)
 	AppConfig = conf.Get(ConfigPath)
@@ -38,11 +41,11 @@ func Gui(confPath string, allRepos []models.Repo) {
 	log.Println("=================================== ")
 
 	http.HandleFunc("/", indexHandler)
-	// http.HandleFunc("/add_repo/", addHandler)
+	http.HandleFunc("/add_repo/", addHandler)
 	http.HandleFunc("/config/", configHandler)
 	// http.HandleFunc("/log/", logHandler)
 	http.HandleFunc("/save_config/", saveConfigHandler)
-	// http.HandleFunc("/update_repo/", updateHandler)
+	http.HandleFunc("/update_repo/", updateHandler)
 	err := http.ListenAndServe(address, nil)
 	check.IfError(err)
 }

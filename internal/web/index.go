@@ -13,6 +13,11 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 	guiData.Config = AppConfig
 	guiData.Icon = Icon
+
+	for i, _ := range AllRepos {
+		AllRepos[i].ID = i + 1
+	}
+
 	guiData.Repos = AllRepos
 
 	tmpl, err := template.ParseFiles("../../web/templates/index.html", "../../web/templates/header.html", "../../web/templates/footer.html")

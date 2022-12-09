@@ -34,6 +34,7 @@
             {{ range .Repos }}
             <tr>
             <form action="/update_repo/" method="post">
+                <input name="id" type="hidden" class="form-control" value="{{ .ID }}">
                 <td><input name="name" type="text" class="form-control" value="{{ .Name }}"></td>
                 <td><input name="path" type="text" class="form-control" value="{{ .Data.Path }}"></td>
                 {{ if eq .Data.Pull "yes" }}

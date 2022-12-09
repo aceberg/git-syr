@@ -2,6 +2,7 @@ package models
 
 // Repo - git repository
 type Repo struct {
+	ID   int	`yaml:"id"`
 	Name string `yaml:"name"`
 	Data struct {
 		Path    string `yaml:"path"`
