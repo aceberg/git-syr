@@ -2,15 +2,20 @@ package web
 
 import (
 	"log"
-	// "fmt"
 	// "embed"
-	// "net/http"
+	"net/http"
 
+	"github.com/aceberg/GitSyncTimer/internal/check"
+	"github.com/aceberg/GitSyncTimer/internal/conf"
 	"github.com/aceberg/GitSyncTimer/internal/models"
 )
 
-// var AppConfig Conf
-// var TableList []Table
+var (
+	// AppConfig - config for Web Gui
+	AppConfig models.Conf
+	// AllRepos - all repositories
+	AllRepos []models.Repo
+)
 
 // //go:embed templates/*
 // var TemplHTML embed.FS
@@ -20,15 +25,16 @@ func Gui(confPath string, allRepos []models.Repo) {
 
 	log.Println("INFO: starting web gui with config", confPath)
 
-	// AppConfig = appConfig
-	// TableList = db.SelectTableList(AppConfig.DbPath)
+	AllRepos = allRepos
+	AppConfig = conf.GetConfig(confPath)
 
-	// address := AppConfig.GuiIP + ":" + AppConfig.GuiPort
+	address := AppConfig.Host + ":" + AppConfig.Port
 
-	// log.Println("=================================== ")
-	// log.Printf("Web GUI at http://%s", address)
-	// log.Println("=================================== ")
+	log.Println("=================================== ")
+	log.Printf("Web GUI at http://%s", address)
+	log.Println("=================================== ")
 
-	// http.HandleFunc("/", dashboard)
-	// http.ListenAndServe(address, nil)
+	http.HandleFunc("/", indexHandler)
+	err := http.ListenAndServe(address, nil)
+	check.IfError(err)
 }

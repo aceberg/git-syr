@@ -1,0 +1,58 @@
+{{ define "index" }}
+
+<body>
+    <div class="container">
+        <br>
+        <form action="/add_repo/" method="post">
+        <div class="input-group">
+            <input name="name" type="text" class="form-control" placeholder="Name" style="max-width: 20%;">
+            <input name="path" type="text" class="form-control" placeholder="Path">
+            <select name="pull" class="form-select" style="max-width: 10%;">
+                <option selected disabled>Pull</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <select name="push" class="form-select" style="max-width: 10%;">
+                <option selected disabled>Push</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <input name="timeout" type="text" class="form-control" placeholder="Timeout" style="max-width: 10%;">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+        </form>
+        <br>
+        <table class="table table-striped">
+            <tr>
+                <th style="width: 20%;">Name</th>
+                <th>Path</th>
+                <th style="width: 5%;">Pull</th>
+                <th style="width: 5%;">Push</th>
+                <th style="width: 10%;">Timeout</th>
+                <th style="width: 1%;"></th>
+            </tr>
+            {{ range .Repos }}
+            <tr>
+            <form action="/update_repo/" method="post">
+                <td><input name="name" type="text" class="form-control" value="{{ .Name }}"></td>
+                <td><input name="path" type="text" class="form-control" value="{{ .Data.Path }}"></td>
+                {{ if eq .Data.Pull "yes" }}
+                    <td><input name="pull" value="{{ .Data.Pull }}" class="form-check-input" type="checkbox" checked></td>
+                {{ else }}
+                    <td><input name="pull" value="yes" class="form-check-input" type="checkbox"></td>
+                {{ end }}
+                {{ if eq .Data.Push "yes" }}
+                    <td><input name="push" value="{{ .Data.Push }}" class="form-check-input" type="checkbox" checked></td>
+                {{ else }}
+                    <td><input name="push" value="yes" class="form-check-input" type="checkbox"></td>
+                {{ end }}
+                <td><input name="timeout" type="text" class="form-control" value="{{ .Data.Timeout }}"></td>
+                <td><button type="submit" class="btn btn-primary">Ok</button></td>
+            </form>
+            </tr>
+            {{ end }}
+        </table>
+    </div>
+
+{{ template "footer" }}
+{{ end }}
