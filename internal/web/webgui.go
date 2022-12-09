@@ -15,6 +15,8 @@ var (
 	AppConfig models.Conf
 	// AllRepos - all repositories
 	AllRepos []models.Repo
+	// ConfigPath - path to Gui config file
+	ConfigPath string
 )
 
 // //go:embed templates/*
@@ -23,10 +25,11 @@ var (
 // Gui - start web server
 func Gui(confPath string, allRepos []models.Repo) {
 
-	log.Println("INFO: starting web gui with config", confPath)
-
 	AllRepos = allRepos
-	AppConfig = conf.GetConfig(confPath)
+	ConfigPath = confPath
+
+	log.Println("INFO: starting web gui with config", ConfigPath)
+	AppConfig = conf.Get(ConfigPath)
 
 	address := AppConfig.Host + ":" + AppConfig.Port
 
@@ -35,6 +38,11 @@ func Gui(confPath string, allRepos []models.Repo) {
 	log.Println("=================================== ")
 
 	http.HandleFunc("/", indexHandler)
+	// http.HandleFunc("/add_repo/", addHandler)
+	http.HandleFunc("/config/", configHandler)
+	// http.HandleFunc("/log/", logHandler)
+	http.HandleFunc("/save_config/", saveConfigHandler)
+	// http.HandleFunc("/update_repo/", updateHandler)
 	err := http.ListenAndServe(address, nil)
 	check.IfError(err)
 }

@@ -7,8 +7,8 @@ import (
 	"github.com/aceberg/GitSyncTimer/internal/models"
 )
 
-// GetConfig - read config from file or env
-func GetConfig(path string) models.Conf {
+// Get - read config from file or env
+func Get(path string) models.Conf {
 	var config models.Conf
 
 	viper.SetDefault("HOST", "0.0.0.0")
@@ -29,9 +29,16 @@ func GetConfig(path string) models.Conf {
 	return config
 }
 
-// func WriteConfig(theme string) {
-// 	viper.SetConfigFile(configPath)
-// 	viper.SetConfigType("env")
-// 	viper.Set("THEME", theme)
-// 	viper.WriteConfig()
-// }
+// Write - write config to file
+func Write(path string, config models.Conf) {
+	
+	viper.SetConfigFile(path)
+	viper.SetConfigType("yaml")
+
+	viper.Set("host", config.Host)
+	viper.Set("port", config.Port)
+	viper.Set("theme", config.Theme)
+
+	err := viper.WriteConfig()
+	check.IfError(err)	
+}
