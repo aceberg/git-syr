@@ -4,13 +4,13 @@ import (
 	"flag"
 	"log"
 
-	"github.com/aceberg/GitSyncTimer/internal/sync"
-	"github.com/aceberg/GitSyncTimer/internal/web"
-	"github.com/aceberg/GitSyncTimer/internal/yaml"
+	"github.com/aceberg/git-syr/internal/sync"
+	"github.com/aceberg/git-syr/internal/web"
+	"github.com/aceberg/git-syr/internal/yaml"
 )
 
-const confPath = "/data/GitSyncTimer/config.yaml"
-const yamlPath = "/data/GitSyncTimer/repos.yaml"
+const confPath = "/data/git-syr/config.yaml"
+const yamlPath = "/data/git-syr/repos.yaml"
 
 func main() {
 	confPtr := flag.String("c", confPath, "Path to config yaml file")

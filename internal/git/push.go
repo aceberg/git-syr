@@ -5,7 +5,7 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/aceberg/GitSyncTimer/internal/check"
+	"github.com/aceberg/git-syr/internal/check"
 )
 
 // Push - executes

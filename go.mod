@@ -1,4 +1,4 @@
-module github.com/aceberg/GitSyncTimer
+module github.com/aceberg/git-syr
 
 go 1.19
 

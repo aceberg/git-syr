@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/aceberg/GitSyncTimer/internal/git"
-	"github.com/aceberg/GitSyncTimer/internal/models"
+	"github.com/aceberg/git-syr/internal/git"
+	"github.com/aceberg/git-syr/internal/models"
 )
 
 func syncRepo(repo models.Repo) {

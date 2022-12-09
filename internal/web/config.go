@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/aceberg/GitSyncTimer/internal/check"
-	"github.com/aceberg/GitSyncTimer/internal/conf"
-	"github.com/aceberg/GitSyncTimer/internal/models"
+	"github.com/aceberg/git-syr/internal/check"
+	"github.com/aceberg/git-syr/internal/conf"
+	"github.com/aceberg/git-syr/internal/models"
 )
 
 func configHandler(w http.ResponseWriter, r *http.Request) {

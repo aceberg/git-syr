@@ -3,8 +3,8 @@ package conf
 import (
 	"github.com/spf13/viper"
 
-	"github.com/aceberg/GitSyncTimer/internal/check"
-	"github.com/aceberg/GitSyncTimer/internal/models"
+	"github.com/aceberg/git-syr/internal/check"
+	"github.com/aceberg/git-syr/internal/models"
 )
 
 // Get - read config from file or env
@@ -31,7 +31,7 @@ func Get(path string) models.Conf {
 
 // Write - write config to file
 func Write(path string, config models.Conf) {
-	
+
 	viper.SetConfigFile(path)
 	viper.SetConfigType("yaml")
 
@@ -40,5 +40,5 @@ func Write(path string, config models.Conf) {
 	viper.Set("theme", config.Theme)
 
 	err := viper.WriteConfig()
-	check.IfError(err)	
+	check.IfError(err)
 }

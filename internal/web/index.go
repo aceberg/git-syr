@@ -4,8 +4,8 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/aceberg/GitSyncTimer/internal/check"
-	"github.com/aceberg/GitSyncTimer/internal/models"
+	"github.com/aceberg/git-syr/internal/check"
+	"github.com/aceberg/git-syr/internal/models"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {

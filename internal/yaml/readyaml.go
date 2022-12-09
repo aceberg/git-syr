@@ -6,8 +6,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/aceberg/GitSyncTimer/internal/check"
-	"github.com/aceberg/GitSyncTimer/internal/models"
+	"github.com/aceberg/git-syr/internal/check"
+	"github.com/aceberg/git-syr/internal/models"
 )
 
 // ReadYaml - read .yaml file to []struct

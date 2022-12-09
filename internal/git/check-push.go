@@ -4,7 +4,7 @@ import (
 	"log"
 	"os/exec"
 
-	"github.com/aceberg/GitSyncTimer/internal/check"
+	"github.com/aceberg/git-syr/internal/check"
 )
 
 // CheckIfPush checks if the repo needs push

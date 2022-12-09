@@ -3,9 +3,9 @@ package sync
 import (
 	"log"
 
-	"github.com/aceberg/GitSyncTimer/internal/check"
-	"github.com/aceberg/GitSyncTimer/internal/git"
-	"github.com/aceberg/GitSyncTimer/internal/models"
+	"github.com/aceberg/git-syr/internal/check"
+	"github.com/aceberg/git-syr/internal/git"
+	"github.com/aceberg/git-syr/internal/models"
 )
 
 // AllRepos - sync all repos
