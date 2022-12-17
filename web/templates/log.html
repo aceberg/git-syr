@@ -1,0 +1,16 @@
+{{ define "log" }}
+
+<body>
+    <div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            {{ range .Themes }}
+            <p>{{ . }}</p>
+            {{ end }}
+        </div>
+    </div>
+    </div>
+        
+
+{{ template "footer" }}
+{{ end }}
