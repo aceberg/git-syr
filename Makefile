@@ -18,6 +18,8 @@ lint:
 	golangci-lint run
 	golint ./...
 
+check: fmt lint
+
 go-build:
 	cd cmd/git-syr/ && \
 	CGO_ENABLED=0 go build -o ../../tmp/git-syr .

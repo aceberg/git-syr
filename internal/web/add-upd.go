@@ -7,8 +7,16 @@ import (
 
 	// "github.com/aceberg/git-syr/internal/check"
 	"github.com/aceberg/git-syr/internal/models"
+	"github.com/aceberg/git-syr/internal/sync"
 	"github.com/aceberg/git-syr/internal/yaml"
 )
+
+func reload() {
+	yaml.Write(YamlPath, AllRepos)
+
+	Quit = make(chan bool)
+	sync.AllRepos(AllRepos, Quit)
+}
 
 func addHandler(w http.ResponseWriter, r *http.Request) {
 	var repo models.Repo
@@ -23,7 +31,8 @@ func addHandler(w http.ResponseWriter, r *http.Request) {
 
 	// log.Println("AllRepos =", AllRepos)
 
-	yaml.Write(YamlPath, AllRepos)
+	Quit <- true
+	reload()
 
 	http.Redirect(w, r, r.Header.Get("Referer"), 302)
 }
@@ -54,7 +63,8 @@ func updateHandler(w http.ResponseWriter, r *http.Request) {
 
 	// log.Println("newRepos =", AllRepos)
 
-	yaml.Write(YamlPath, AllRepos)
+	Quit <- true
+	reload()
 
 	http.Redirect(w, r, r.Header.Get("Referer"), 302)
 }

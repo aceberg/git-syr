@@ -5,12 +5,13 @@ import (
 	"html/template"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/aceberg/git-syr/internal/check"
 	"github.com/aceberg/git-syr/internal/models"
 )
 
-func logHandler(w http.ResponseWriter, r *http.Request) {
+func errorLogHandler(w http.ResponseWriter, r *http.Request) {
 	var guiData models.GuiData
 	var text string
 
@@ -25,10 +26,9 @@ func logHandler(w http.ResponseWriter, r *http.Request) {
 
 	for scanner.Scan() {
 		text = scanner.Text()
-		// if strings.Contains(text, "ERROR") {
-		// 	text = "<p style=\"color: red;\">" + text + "</p>"
-		// }
-		guiData.Themes = append(guiData.Themes, text)
+		if strings.Contains(text, "ERROR") {
+			guiData.Themes = append(guiData.Themes, text)
+		}
 	}
 
 	file.Close()

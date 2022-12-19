@@ -9,7 +9,7 @@ import (
 )
 
 // AllRepos - sync all repos
-func AllRepos(allRepos []models.Repo) {
+func AllRepos(allRepos []models.Repo, quit chan bool) {
 	var err error
 	for _, oneRepo := range allRepos {
 		oneRepo.Timeout, err = check.TimeToSec(oneRepo.Timeout)
@@ -23,7 +23,7 @@ func AllRepos(allRepos []models.Repo) {
 		}
 		if oneRepo.Push == "yes" || oneRepo.Pull == "yes" {
 			log.Println("INFO: started sync for repo", oneRepo.Name)
-			go syncRepo(oneRepo)
+			go syncRepo(oneRepo, quit)
 		} else {
 			log.Println("WARNING: repo", oneRepo.Name, "has no pull or push settings")
 		}

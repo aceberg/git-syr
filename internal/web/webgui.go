@@ -8,6 +8,8 @@ import (
 	"github.com/aceberg/git-syr/internal/check"
 	"github.com/aceberg/git-syr/internal/conf"
 	"github.com/aceberg/git-syr/internal/models"
+	"github.com/aceberg/git-syr/internal/sync"
+	"github.com/aceberg/git-syr/internal/yaml"
 )
 
 var (
@@ -21,18 +23,31 @@ var (
 	YamlPath string
 	// LogPath - path to log file
 	LogPath string
+	// Quit - channel
+	Quit chan bool
 )
 
 // //go:embed templates/*
 // var TemplHTML embed.FS
 
 // Gui - start web server
-func Gui(confPath, yamlPath, logPath string, allRepos []models.Repo) {
+func Gui(confPath, yamlPath, logPath string) {
 
-	AllRepos = allRepos
+	// AllRepos = allRepos
 	ConfigPath = confPath
 	YamlPath = yamlPath
 	LogPath = logPath
+
+	AllRepos = yaml.Read(YamlPath)
+	log.Println("INFO: all repos", AllRepos)
+
+	if AllRepos == nil {
+		log.Printf("ERROR: no repos")
+		return
+	}
+
+	Quit = make(chan bool)
+	sync.AllRepos(AllRepos, Quit)
 
 	log.Println("INFO: starting web gui with config", ConfigPath)
 	AppConfig = conf.Get(ConfigPath)
@@ -46,6 +61,8 @@ func Gui(confPath, yamlPath, logPath string, allRepos []models.Repo) {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/add_repo/", addHandler)
 	http.HandleFunc("/config/", configHandler)
+	http.HandleFunc("/error/", errorLogHandler)
+	http.HandleFunc("/help/", helpHandler)
 	http.HandleFunc("/log/", logHandler)
 	http.HandleFunc("/save_config/", saveConfigHandler)
 	http.HandleFunc("/update_repo/", updateHandler)
