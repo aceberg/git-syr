@@ -18,7 +18,7 @@ func main() {
 	confPtr := flag.String("c", confPath, "Path to config yaml file")
 	logPtr := flag.String("l", logPath, "Path to log file")
 	yamlPtr := flag.String("r", yamlPath, "Path to repos yaml file")
-	webPtr := flag.Bool("w", false, "Launch web gui")
+	webPtr := flag.Bool("w", true, "Launch without web gui")
 	flag.Parse()
 
 	go logfile.Output(*logPtr)

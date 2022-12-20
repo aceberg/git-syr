@@ -14,7 +14,8 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 	guiData.Config = AppConfig
 	guiData.Icon = Icon
 
-	guiData.Themes = []string{"● cerulean", "● cosmo"}
+	guiData.Themes = []string{"● To delete repository save it with empty path",
+		"● Timeout examples: '30s' - 30 seconds, '5m' - 5 minutes, '3h' - 3 hours"}
 
 	tmpl, err := template.ParseFiles("../../web/templates/log.html", "../../web/templates/header.html", "../../web/templates/footer.html")
 	check.IfError(err)

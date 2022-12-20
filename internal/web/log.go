@@ -25,9 +25,6 @@ func logHandler(w http.ResponseWriter, r *http.Request) {
 
 	for scanner.Scan() {
 		text = scanner.Text()
-		// if strings.Contains(text, "ERROR") {
-		// 	text = "<p style=\"color: red;\">" + text + "</p>"
-		// }
 		guiData.Themes = append(guiData.Themes, text)
 	}
 

@@ -12,6 +12,9 @@ import (
 )
 
 func reload() {
+
+	close(Quit)
+
 	yaml.Write(YamlPath, AllRepos)
 
 	Quit = make(chan bool)
@@ -31,7 +34,6 @@ func addHandler(w http.ResponseWriter, r *http.Request) {
 
 	// log.Println("AllRepos =", AllRepos)
 
-	Quit <- true
 	reload()
 
 	http.Redirect(w, r, r.Header.Get("Referer"), 302)
@@ -63,7 +65,6 @@ func updateHandler(w http.ResponseWriter, r *http.Request) {
 
 	// log.Println("newRepos =", AllRepos)
 
-	Quit <- true
 	reload()
 
 	http.Redirect(w, r, r.Header.Get("Referer"), 302)
