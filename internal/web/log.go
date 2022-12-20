@@ -30,7 +30,7 @@ func logHandler(w http.ResponseWriter, r *http.Request) {
 
 	file.Close()
 
-	tmpl, err := template.ParseFiles("../../web/templates/log.html", "../../web/templates/header.html", "../../web/templates/footer.html")
+	tmpl, err := template.ParseFS(TemplHTML, "templates/log.html", "templates/header.html", "templates/footer.html")
 	check.IfError(err)
 	err = tmpl.ExecuteTemplate(w, "header", guiData)
 	check.IfError(err)

@@ -20,7 +20,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 	guiData.Repos = AllRepos
 
-	tmpl, err := template.ParseFiles("../../web/templates/index.html", "../../web/templates/header.html", "../../web/templates/footer.html")
+	tmpl, err := template.ParseFS(TemplHTML, "templates/index.html", "templates/header.html", "templates/footer.html")
 	check.IfError(err)
 	err = tmpl.ExecuteTemplate(w, "header", guiData)
 	check.IfError(err)

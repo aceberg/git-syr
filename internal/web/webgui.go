@@ -1,8 +1,8 @@
 package web
 
 import (
+	"embed"
 	"log"
-	// "embed"
 	"net/http"
 
 	"github.com/aceberg/git-syr/internal/check"
@@ -27,8 +27,8 @@ var (
 	Quit chan bool
 )
 
-// //go:embed templates/*
-// var TemplHTML embed.FS
+//go:embed templates/*
+var TemplHTML embed.FS
 
 // Gui - start web server
 func Gui(confPath, yamlPath, logPath string) {
