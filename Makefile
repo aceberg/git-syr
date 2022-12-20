@@ -26,3 +26,11 @@ go-build:
 
 docker-build:
 	docker build -t $(DUSER)/$(PKG_NAME) .
+
+cli-run:
+	cd cmd/git-syr-cli/ && \
+	go run .
+
+cli-build:
+	cd cmd/git-syr-cli/ && \
+	CGO_ENABLED=0 go build -o ../../tmp/git-syr-cli .

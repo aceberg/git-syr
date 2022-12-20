@@ -8,6 +8,9 @@ import (
 
 // Output - copy stdout and stderr to file
 func Output(path string) {
+	if path == "" {
+		return
+	}
 
 	// open file read/write | create if not exist | clear file at open if exists
 	f, _ := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
