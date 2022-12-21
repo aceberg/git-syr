@@ -5,6 +5,7 @@ import (
 	"time"
 	// "log"
 
+	"github.com/aceberg/git-syr/internal/check"
 	"github.com/aceberg/git-syr/internal/cli"
 	"github.com/aceberg/git-syr/internal/logfile"
 	"github.com/aceberg/git-syr/internal/web"
@@ -20,6 +21,10 @@ func main() {
 	yamlPtr := flag.String("r", yamlPath, "Path to repos yaml file")
 	webPtr := flag.Bool("w", true, "Launch without web gui")
 	flag.Parse()
+
+	check.Path(*confPtr)
+	check.Path(*logPtr)
+	check.Path(*yamlPtr)
 
 	go logfile.Output(*logPtr)
 	time.Sleep(1 * time.Second)

@@ -1,0 +1,12 @@
+[Unit]
+Description=git-syr-cli
+Documentation=https://github.com/aceberg/git-syr
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/git-syr-cli -r /etc/git-syr/repos.yaml -l /var/log/git-syr.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

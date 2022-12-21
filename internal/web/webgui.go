@@ -27,6 +27,8 @@ var (
 	Quit chan bool
 )
 
+// TemplHTML - html templates
+//
 //go:embed templates/*
 var TemplHTML embed.FS
 

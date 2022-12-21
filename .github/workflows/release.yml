@@ -21,8 +21,14 @@ jobs:
       - name: Build and archive
         run: build/ci/build.sh ${{ env.VERSION }}
 
+      - name: Build and archive (cli version)
+        run: build/ci/cli-build.sh ${{ env.VERSION }}
+
       - name: Build .deb package
         run: build/ci/build-deb.sh ${{ env.VERSION }}
+
+      - name: Build .deb package (cli version)
+        run: build/ci/cli-build-deb.sh ${{ env.VERSION }}
 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master

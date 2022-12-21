@@ -11,7 +11,7 @@ mkdir -p $PKGDIR
 cp git-syr $PKGDIR/
 cp configs/git-syr.service $PKGDIR/
 cp configs/git-syr@.service $PKGDIR/
-cp configs/user-install.sh $PKGDIR/
+cp configs/install.sh $PKGDIR/
 
 cd /opt
 tar cvzf git-syr-$1.tar.gz git-syr

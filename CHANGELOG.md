@@ -2,6 +2,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.1.1] - 2022-12-21
+### Added
+- Create config path if not exist
+- Separate cli-only version
+
 ## [0.1.0] - 2022-12-20
 ### Added
 - Binary release
