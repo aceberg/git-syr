@@ -9,7 +9,7 @@ import (
 	"github.com/aceberg/git-syr/internal/logfile"
 )
 
-const yamlPath = "/data/git-syr/repos.yaml"
+const yamlPath = "repos.yaml"
 const logPath = ""
 
 func main() {

@@ -10,9 +10,9 @@ import (
 	"github.com/aceberg/git-syr/internal/web"
 )
 
-const confPath = "/data/git-syr/config.yaml"
-const yamlPath = "/data/git-syr/repos.yaml"
-const logPath = "/data/git-syr/git-syr.log"
+const confPath = "config.yaml"
+const yamlPath = "repos.yaml"
+const logPath = "git-syr.log"
 
 func main() {
 	confPtr := flag.String("c", confPath, "Path to config yaml file")

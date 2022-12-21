@@ -41,11 +41,6 @@ func Gui(confPath, yamlPath, logPath string) {
 	AllRepos = yaml.Read(YamlPath)
 	log.Println("INFO: all repos", AllRepos)
 
-	if AllRepos == nil {
-		log.Printf("ERROR: no repos")
-		return
-	}
-
 	Quit = make(chan bool)
 	sync.AllRepos(AllRepos, Quit)
 
