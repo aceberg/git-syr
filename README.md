@@ -11,7 +11,7 @@ Sync Your Repos - pull or push your git repos regularly. For dotfiles backups or
 [3. Config](https://github.com/aceberg/git-syr#3-config)   
 [4. Options](https://github.com/aceberg/git-syr#4-options)  
 
-SCREENSHOT
+![screenshot](https://raw.githubusercontent.com/aceberg/git-syr/main/assets/Screenshot%202022-12-22%20at%2012-51-48%20Sync%20Your%20Repos.png)
 
 
 
