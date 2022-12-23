@@ -103,7 +103,7 @@ theme: cosmo
 | -c | Path to GUI config file |./config.yaml| $HOME/.config/git-syr/config.yaml | /etc/git-syr/config.yaml |
 | -l | Path to log file | ./git-syr.log | $HOME/.config/git-syr/git-syr.log | /var/log/git-syr.log |
 | -r | Path to repos yaml file |./repos.yaml| $HOME/.config/git-syr/repos.yaml | /etc/git-syr/repos.yaml |
-| -w | Launch with web gui | true | | |
+| -w | Launch without web gui | false | | |
 
 ### 2. git-syr-cli
 | Key  | Description | Default | Systemd (user) | Systemd (root) |
