@@ -23,6 +23,11 @@ Maintainer: aceberg <aceberg_a@proton.me>
 Description: Sync Your Repos - pull or push your git repos regularly
 " > $PKGDIR/DEBIAN/control
 
+echo "
+systemctl daemon-reload
+" > $PKGDIR/DEBIAN/postinst
+
 dpkg-deb --build --root-owner-group $PKGDIR
 
+rm git-syr-cli
 rm -rf $PKGDIR

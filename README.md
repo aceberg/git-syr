@@ -51,16 +51,16 @@ sudo ./install.sh
 ### 1. Systemd as user (recommended)
 Enable and start service, replace `MYUSER` with your username
 ```sh
-systemctl enable git-syr@MYUSER.service
-systemctl start git-syr@MYUSER.service
+sudo systemctl enable git-syr@MYUSER.service
+sudo systemctl start git-syr@MYUSER.service
 ```
 Web GUI will be available at [http://0.0.0.0:8844](http://0.0.0.0:8844)
 
 ### 2. Systemd as root
 Enable and start service
 ```sh
-systemctl enable git-syr.service
-systemctl start git-syr.service
+sudo systemctl enable git-syr.service
+sudo systemctl start git-syr.service
 ```
 Web GUI will be available at [http://0.0.0.0:8844](http://0.0.0.0:8844)
 
