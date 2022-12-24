@@ -27,6 +27,8 @@ echo "
 systemctl daemon-reload
 " > $PKGDIR/DEBIAN/postinst
 
+chmod 775 $PKGDIR/DEBIAN/postinst
+
 dpkg-deb --build --root-owner-group $PKGDIR
 
 rm git-syr-cli

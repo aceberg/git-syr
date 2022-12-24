@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.2] - 2022-12-23
 ### Fixed
 - Key -w now works correctly
-
+- Deb package postinst `systemctl daemon-reload`
 
 ## [0.1.1] - 2022-12-21
 ### Added
