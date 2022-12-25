@@ -1,6 +1,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/aceberg/git-syr)](https://goreportcard.com/report/github.com/aceberg/git-syr)
 [![Binary-release](https://github.com/aceberg/git-syr/actions/workflows/release.yml/badge.svg)](https://github.com/aceberg/git-syr/actions/workflows/release.yml)
 ![GitHub](https://img.shields.io/github/license/aceberg/git-syr)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d02b3d4486ec4b8158af/maintainability)](https://codeclimate.com/github/aceberg/git-syr/maintainability)
 
 <h1><a href="https://github.com/aceberg/git-syr">
     <img src="https://raw.githubusercontent.com/aceberg/git-syr/main/assets/logo.png" width="20" />
