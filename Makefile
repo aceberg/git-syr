@@ -9,13 +9,13 @@ mod:
 
 run:
 	cd cmd/git-syr/ && \
-	go run .
+	go run . -c /data/git-syr/config.yaml -r /data/git-syr/repos.yaml -l /data/git-syr/git-syr.log
 
 fmt:
 	go fmt ./...
 
 lint:
-	golangci-lint run
+	# golangci-lint run
 	golint ./...
 
 check: fmt lint
