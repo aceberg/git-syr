@@ -2,7 +2,6 @@ package web
 
 import (
 	"bufio"
-	"html/template"
 	"net/http"
 	"os"
 	"strings"
@@ -33,10 +32,5 @@ func errorLogHandler(w http.ResponseWriter, r *http.Request) {
 
 	file.Close()
 
-	tmpl, err := template.ParseFS(TemplHTML, "templates/log.html", "templates/header.html", "templates/footer.html")
-	check.IfError(err)
-	err = tmpl.ExecuteTemplate(w, "header", guiData)
-	check.IfError(err)
-	err = tmpl.ExecuteTemplate(w, "log", guiData)
-	check.IfError(err)
+	execTemplate(w, "log", guiData)
 }
