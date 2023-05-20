@@ -2,6 +2,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2023-05-20
+### Added
+- Edit `.git/config` and `.gitignore` in web GUI
+- Set additional push command (Example: `git push all`)
+
+### Changed
+- Move to go 1.20
+
 ## [0.1.2] - 2022-12-23
 ### Fixed
 - Key -w now works correctly
