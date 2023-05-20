@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/aceberg/git-syr/internal/check"
+	"github.com/aceberg/git-syr/internal/models"
 )
 
 // Push - executes
@@ -13,13 +14,13 @@ import (
 // git commit -m `date`
 // git push
 // in repo
-func Push(path string) {
+func Push(repo models.Repo) {
 
 	currentTime := time.Now()
 	timeString := string(currentTime.Format("2006-01-02 15:04:05"))
 
-	gitDir := "--git-dir=" + path + "/.git"
-	gitTree := "--work-tree=" + path
+	gitDir := "--git-dir=" + repo.Path + "/.git"
+	gitTree := "--work-tree=" + repo.Path
 
 	cmd := exec.Command("git", gitDir, gitTree, "add", "-A")
 	out1, err := cmd.CombinedOutput()
@@ -29,9 +30,13 @@ func Push(path string) {
 	out2, err := cmd.CombinedOutput()
 	check.IfError(err)
 
-	cmd = exec.Command("git", gitDir, gitTree, "push")
+	if repo.AddPush != "" {
+		cmd = exec.Command("git", gitDir, gitTree, "push", repo.AddPush)
+	} else {
+		cmd = exec.Command("git", gitDir, gitTree, "push")
+	}
 	out3, err := cmd.CombinedOutput()
 	check.IfError(err)
 
-	log.Println("INFO: Push repo", path, "\n", string(out1), "\n", string(out2), "\n", string(out3))
+	log.Println("INFO: Push repo", repo.Path, "\n", string(out1), "\n", string(out2), "\n", string(out3))
 }

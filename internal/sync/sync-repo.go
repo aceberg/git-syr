@@ -27,7 +27,7 @@ func syncRepo(repo models.Repo, quit chan bool) {
 					git.Pull(repo.Path)
 				}
 				if repo.Push == "yes" && git.CheckIfPush(repo.Path) {
-					git.Push(repo.Path)
+					git.Push(repo)
 				}
 				lastDate = time.Now()
 			}
