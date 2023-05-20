@@ -13,12 +13,12 @@ import (
 
 func reload() {
 
-	close(Quit)
+	close(AppConfig.Quit)
 
-	yaml.Write(YamlPath, AllRepos)
+	yaml.Write(AppConfig.YamlPath, AllRepos)
 
-	Quit = make(chan bool)
-	sync.AllRepos(AllRepos, Quit)
+	AppConfig.Quit = make(chan bool)
+	sync.AllRepos(AllRepos, AppConfig.Quit)
 }
 
 func addHandler(w http.ResponseWriter, r *http.Request) {

@@ -2,9 +2,14 @@ package models
 
 // Conf - web gui config
 type Conf struct {
-	Host  string
-	Port  string
-	Theme string
+	Host     string
+	Port     string
+	Theme    string
+	Icon     string
+	ConfPath string
+	YamlPath string
+	LogPath  string
+	Quit     chan bool
 }
 
 // Repo - git repository

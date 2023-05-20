@@ -15,9 +15,8 @@ func errorLogHandler(w http.ResponseWriter, r *http.Request) {
 	var text string
 
 	guiData.Config = AppConfig
-	guiData.Icon = Icon
 
-	file, err := os.Open(LogPath)
+	file, err := os.Open(AppConfig.LogPath)
 	check.IfError(err)
 
 	scanner := bufio.NewScanner(file)

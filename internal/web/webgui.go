@@ -13,19 +13,18 @@ import (
 // Gui - start web server
 func Gui(confPath, yamlPath, logPath string) {
 
-	// AllRepos = allRepos
-	ConfigPath = confPath
-	YamlPath = yamlPath
-	LogPath = logPath
+	AppConfig = conf.Get(confPath)
+	AppConfig.ConfPath = confPath
+	AppConfig.YamlPath = yamlPath
+	AppConfig.LogPath = logPath
+	AppConfig.Icon = Icon
+	log.Println("INFO: starting web gui with config", AppConfig.ConfPath)
 
-	AllRepos = yaml.Read(YamlPath)
+	AllRepos = yaml.Read(AppConfig.YamlPath)
 	log.Println("INFO: all repos", AllRepos)
 
-	Quit = make(chan bool)
-	sync.AllRepos(AllRepos, Quit)
-
-	log.Println("INFO: starting web gui with config", ConfigPath)
-	AppConfig = conf.Get(ConfigPath)
+	AppConfig.Quit = make(chan bool)
+	sync.AllRepos(AllRepos, AppConfig.Quit)
 
 	address := AppConfig.Host + ":" + AppConfig.Port
 
@@ -36,6 +35,7 @@ func Gui(confPath, yamlPath, logPath string) {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/add_repo/", addHandler)
 	http.HandleFunc("/config/", configHandler)
+	// http.HandleFunc("/edit/", editHandler)
 	http.HandleFunc("/error/", errorLogHandler)
 	http.HandleFunc("/help/", helpHandler)
 	http.HandleFunc("/log/", logHandler)

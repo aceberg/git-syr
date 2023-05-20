@@ -11,14 +11,6 @@ var (
 	AppConfig models.Conf
 	// AllRepos - all repositories
 	AllRepos []models.Repo
-	// ConfigPath - path to Gui config file
-	ConfigPath string
-	// YamlPath - path to repos file
-	YamlPath string
-	// LogPath - path to log file
-	LogPath string
-	// Quit - channel
-	Quit chan bool
 )
 
 // TemplHTML - html templates

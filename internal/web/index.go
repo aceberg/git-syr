@@ -10,7 +10,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	var guiData models.GuiData
 
 	guiData.Config = AppConfig
-	guiData.Icon = Icon
 
 	for i := range AllRepos {
 		AllRepos[i].ID = i + 1
