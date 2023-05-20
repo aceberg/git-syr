@@ -28,4 +28,5 @@ type GuiData struct {
 	Icon   string
 	Repos  []Repo
 	Themes []string
+	Path   string
 }
