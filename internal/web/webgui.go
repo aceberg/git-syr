@@ -36,8 +36,6 @@ func Gui(confPath, yamlPath, logPath string) {
 	http.HandleFunc("/add_repo/", addHandler)
 	http.HandleFunc("/config/", configHandler)
 	http.HandleFunc("/edit/", editHandler)
-	http.HandleFunc("/error/", errorLogHandler)
-	http.HandleFunc("/help/", helpHandler)
 	http.HandleFunc("/log/", logHandler)
 	http.HandleFunc("/save_config/", saveConfigHandler)
 	http.HandleFunc("/save_file/", saveFileHandler)

@@ -4,8 +4,10 @@
     <div class="container mt-5">
         <div class="row">
             {{ range .Repos }}
-            <h3>{{ .Name }} - {{ .Path }}</h3>
+            <h5>{{ .Name }} - {{ .Path }}</h5>
             {{ end }}
+        </div>
+        <div class="row">
             <div class="col">
                 <code>.git/config</code>
                 <form action="/save_file/" method="post">
