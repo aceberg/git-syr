@@ -7,8 +7,10 @@
                 <p>Edit .git/config</p>
                 <form action="/save_file/" method="post">
                     <input name="file" value="config" type="hidden">
+                    {{ range .Repos }}
                     <input name="path" value="{{ .Path }}" type="hidden">
-                    <textarea name="text" rows="15" class="form-control">{{index .Themes 0}}</textarea>
+                    {{ end }}
+                    <textarea name="text" rows="15" class="form-control">{{ index .Themes 0 }}</textarea>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
@@ -16,11 +18,29 @@
                 <p>Edit .gitignore</p>
                 <form action="/save_file/" method="post">
                     <input name="file" value="ignore" type="hidden">
+                    {{ range .Repos }}
                     <input name="path" value="{{ .Path }}" type="hidden">
-                    <textarea name="text" rows="15" class="form-control">{{index .Themes 1}}</textarea>
+                    {{ end }}
+                    <textarea name="text" rows="15" class="form-control">{{ index .Themes 1 }}</textarea>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
+        </div>
+        <br>
+        <div class="row">
+            <p>Additional push command</p>
+            {{ range .Repos }}
+            <form action="/update_repo/" method="post" class="input-group">
+                <input name="id" value="{{ .ID }}" type="hidden">
+                <input name="name" value="{{ .Name }}" type="hidden">
+                <input name="path" value="{{ .Path }}" type="hidden">
+                <input name="timeout" value="{{ .Timeout }}" type="hidden">
+                <input name="pull" value="{{ .Pull }}" type="hidden">
+                <input name="push" value="{{ .Push }}" type="hidden">
+                <input name="addpush" type="text" class="form-control" value="{{ .AddPush }}">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+            {{ end }}
         </div>
     </div>
         

@@ -21,7 +21,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 
 	for _, oneRepo := range AllRepos {
 		if oneRepo.ID == id {
-			guiData.Path = oneRepo.Path
+			guiData.Repos = append(guiData.Repos, oneRepo)
 
 			file1, err := os.ReadFile(oneRepo.Path + "/.git/config")
 			check.IfError(err)

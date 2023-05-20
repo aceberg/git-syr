@@ -42,7 +42,8 @@
                     </a>
                 </td>
             <form action="/update_repo/" method="post">
-                <input name="id" type="hidden" class="form-control" value="{{ .ID }}">
+                <input name="id" type="hidden" value="{{ .ID }}">
+                <input name="addpush" type="hidden" value="{{ .AddPush }}">
                 <td><input name="name" type="text" class="form-control" value="{{ .Name }}"></td>
                 <td><input name="path" type="text" class="form-control" value="{{ .Path }}"></td>
                 {{ if eq .Pull "yes" }}

@@ -20,6 +20,7 @@ type Repo struct {
 	Timeout string `yaml:"timeout"`
 	Pull    string `yaml:"pull"`
 	Push    string `yaml:"push"`
+	AddPush string `yaml:"addpush"`
 }
 
 // GuiData - web gui data
@@ -28,5 +29,4 @@ type GuiData struct {
 	Icon   string
 	Repos  []Repo
 	Themes []string
-	Path   string
 }

@@ -50,6 +50,7 @@ func updateHandler(w http.ResponseWriter, r *http.Request) {
 	repo.Pull = r.FormValue("pull")
 	repo.Push = r.FormValue("push")
 	repo.Timeout = r.FormValue("timeout")
+	repo.AddPush = r.FormValue("addpush")
 
 	var newRepos []models.Repo
 	for i := range AllRepos {
