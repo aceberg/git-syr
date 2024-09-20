@@ -2,6 +2,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.1.5] - 2024-09-20
+### Added
+- Theme `dark` and `light` option
+- Local Node modules option
+
 ## [0.1.4] - 2023-05-20
 ### Changed
 - Log page update

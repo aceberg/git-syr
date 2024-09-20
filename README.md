@@ -90,7 +90,9 @@ You can do all configuration through web interface. Config files paths are liste
 ```
 `config.yaml` example:
 ```yaml
+color: light
 host: 0.0.0.0
+nodepath: ""
 port: "8844"
 theme: cosmo
 ```
@@ -103,6 +105,7 @@ theme: cosmo
 | --------  | ----------- | ------- | --- | --- |
 | -c | Path to GUI config file |./config.yaml| $HOME/.config/git-syr/config.yaml | /etc/git-syr/config.yaml |
 | -l | Path to log file | ./git-syr.log | $HOME/.config/git-syr/git-syr.log | /var/log/git-syr.log |
+| -n | Path to [local node modules](https://github.com/aceberg/my-dockerfiles/tree/main/node-bootstrap) | | | |
 | -r | Path to repos yaml file |./repos.yaml| $HOME/.config/git-syr/repos.yaml | /etc/git-syr/repos.yaml |
 | -w | Launch without web gui | false | | |
 

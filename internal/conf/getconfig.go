@@ -14,6 +14,8 @@ func Get(path string) models.Conf {
 	viper.SetDefault("HOST", "0.0.0.0")
 	viper.SetDefault("PORT", "8844")
 	viper.SetDefault("THEME", "journal")
+	viper.SetDefault("THEME", "light")
+	viper.SetDefault("NODEPATH", "")
 
 	viper.SetConfigFile(path)
 	viper.SetConfigType("yaml")
@@ -25,6 +27,8 @@ func Get(path string) models.Conf {
 	config.Host, _ = viper.Get("HOST").(string)
 	config.Port, _ = viper.Get("PORT").(string)
 	config.Theme, _ = viper.Get("THEME").(string)
+	config.Color, _ = viper.Get("COLOR").(string)
+	config.NodePath, _ = viper.Get("NODEPATH").(string)
 
 	return config
 }
@@ -38,6 +42,8 @@ func Write(path string, config models.Conf) {
 	viper.Set("host", config.Host)
 	viper.Set("port", config.Port)
 	viper.Set("theme", config.Theme)
+	viper.Set("color", config.Color)
+	viper.Set("nodepath", config.NodePath)
 
 	err := viper.WriteConfig()
 	check.IfError(err)

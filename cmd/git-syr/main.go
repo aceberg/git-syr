@@ -14,10 +14,12 @@ import (
 const confPath = "config.yaml"
 const yamlPath = "repos.yaml"
 const logPath = "git-syr.log"
+const nodePath = ""
 
 func main() {
 	confPtr := flag.String("c", confPath, "Path to config yaml file")
 	logPtr := flag.String("l", logPath, "Path to log file")
+	nodePtr := flag.String("n", nodePath, "Path to local node modules")
 	yamlPtr := flag.String("r", yamlPath, "Path to repos yaml file")
 	webPtr := flag.Bool("w", false, "Launch without web gui")
 	flag.Parse()
@@ -32,6 +34,6 @@ func main() {
 	if *webPtr {
 		cli.Start(*yamlPtr)
 	} else {
-		web.Gui(*confPtr, *yamlPtr, *logPtr)
+		web.Gui(*confPtr, *yamlPtr, *logPtr, *nodePtr)
 	}
 }

@@ -1,17 +1,22 @@
 {{ define "header"}}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="{{ .Config.Color }}">
 <head>
     <title>Sync Your Repos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Favicon-->
     <link href="data:image/x-icon;base64, {{ .Config.Icon }}" rel="icon" type="image/x-icon" />
+    {{ if eq .Config.NodePath "" }}
     <!-- Font for icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Bootstrap and theme -->
-    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.0/dist/{{ .Config.Theme }}/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aceberg-bootswatch-fork@v5.3.3-2/dist/{{ .Config.Theme }}/bootstrap.min.css" rel="stylesheet">
+    {{ else }} <!-- Local node_modules -->
+    <link rel="stylesheet" href="{{ .Config.NodePath }}/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="{{ .Config.NodePath }}/node_modules/bootswatch/dist/{{ .Config.Theme }}/bootstrap.min.css" rel="stylesheet">
+    {{ end }}
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
